@@ -197,7 +197,7 @@ class _freeze_time(object):
         time.time = real_time
 
         for mod_name, module in sys.modules.items():
-            if mod_name.startswith('six.moves.'):
+            if mod_name.startswith(('six.moves.', 'django.utils.six.moves.')):
                 continue
             if mod_name != 'datetime':
                 if hasattr(module, 'datetime') and module.datetime == FakeDatetime:
