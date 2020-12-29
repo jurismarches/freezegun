@@ -1,24 +1,31 @@
 #!/usr/bin/env python
 
-import sys
-from setuptools import setup, find_packages
+from setuptools import setup
 
-requires = ['six']
-
-if sys.version_info[0] == 2:
-    requires += ['python-dateutil>=1.0, <2.0, >=2.1']
-else:
-    # Py3k
-    requires += ['python-dateutil>=2.0']
+with open('README.rst') as f:
+    readme = f.read()
 
 setup(
     name='freezegun',
-    version='0.1.13',
+    version='1.0.0',
     description='Let your Python tests travel through time',
+    long_description=readme,
     author='Steve Pulec',
-    author_email='spulec@gmail',
+    author_email='spulec@gmail.com',
     url='https://github.com/spulec/freezegun',
-    packages=find_packages(exclude=("tests", "tests.*",)),
-    install_requires=requires,
+    packages=['freezegun'],
+    install_requires=['python-dateutil>=2.7'],
     include_package_data=True,
+    license='Apache 2.0',
+    python_requires='>=3.5',
+    classifiers=[
+        'License :: OSI Approved :: Apache Software License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
+    ],
 )

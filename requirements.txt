@@ -1,4 +1,4 @@
-coverage
+pytest
+pytest-coverage
 coveralls
-nose
-sure==1.2.0
+maya; python_version >= '3.7'

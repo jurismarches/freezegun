@@ -6,10 +6,19 @@ init:
 
 test:
 	rm -f .coverage
-	nosetests ./tests/
+	pytest
 
 travis:
-	nosetests --with-coverage ./tests/
+	pytest --cov
 
 tdaemon:
 	tdaemon -t nose ./tests/ --custom-args="--with-growl"
+
+publish:
+	rm -rf dist
+	python -m pep517.build --source --binary .
+	twine upload dist/*
+
+venv:
+	virtualenv venv
+	venv/bin/pip install -r requirements.txt
